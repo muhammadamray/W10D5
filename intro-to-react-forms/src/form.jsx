@@ -71,7 +71,7 @@ function Form() {
 
         if(errors.length){
             setErrorMessages(errors);
-        }else{
+        } else{
             let user = {
                 name,
                 email,
@@ -89,7 +89,7 @@ function Form() {
     const showErrors = ()=>{
         if(!errorMessages.length){
             return null;
-        }else{
+        } else{
             return(
                 <ul>
                     {errorMessages.map( error => <li>error</li>)}
@@ -102,10 +102,66 @@ function Form() {
     return (
         <>
             {showErrors()}
+            <form name='form' onSubmit={handleSubmit}>
+                <h2>Sign Up</h2>
+                <input type="text" placeholder="Name" onChange={handleChange('name')} value={name}/>
+                <br/>
 
+                <input type="text" placeholder="Email" onChange={handleChange('email')} value={email}/>
+                <br/>
+
+
+                <input type="tel" placeholder="Number Optional" onChange={handleChange('phoneNumber')} value={phoneNumber}/>
+                <br/>
+
+
+                <label htmlFor="phoneType">Phone Type</label>
+                <select name="phone-type" id="phoneType">
+                    <option value="Home">Home</option>
+                    <option value="Work">Work</option>
+                    <option value="Mobile">Mobile</option>
+                </select>
+                <br/>
+
+
+                <div>
+                    <p>Staff:</p>
+                    <input type="radio" name="staff" id="Instructor"/>
+                    <label htmlFor="Instructor">Instructor</label>
+                    <input type="radio" name="Student" id="Student"/>
+                    <label htmlFor="Student">Student</label>
+                </div>
+                <br />
+                
+
+                <div>
+                    <label for="bio">Bio:</label>
+                    <input type="text" id="Bio" name="Bio" placeholder="Please enter a bio thats under 280 characters"/>
+                </div>
+                <br />
+
+                <form>
+                    <fieldset>
+                        <legend>Sign up for Email Notifications?</legend>
+                        <div>
+                            <input type="checkbox" id="emailNotifYes" name="emailNotif" value="Yes" />
+                            <label htmlFor="emailNotifYes">Yes</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="emailNotifNo" name="emailNotif" value="No" />
+                            <label htmlFor="emailNotifNo">No</label>
+                        </div>
+                    </fieldset>
+                </form>
+
+
+                <button>Submit</button>
+            </form>
         </>
     )
 
 };
 
+
+export default Form;
 
